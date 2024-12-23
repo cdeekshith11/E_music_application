@@ -1,0 +1,9 @@
+
+<h1>Categories</h1>
+<ul>
+    {% for category in categories %}
+        <li><a href="{% url 'genres' category.id %}">{{ category.name }}</a></li>
+    {% endfor %}
+</ul>
+<!-- Page-specific content goes here -->
+

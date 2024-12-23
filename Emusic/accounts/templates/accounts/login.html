@@ -1,0 +1,91 @@
+<!-- 
+<h1>Login</h1>
+<form method="post">
+    {% csrf_token %}
+    <input type="text" name="username" placeholder="Username" required>
+    <input type="password" name="password" placeholder="Password" required>
+    <button type="submit">Login</button>
+</form>
+<p><a href="{% url 'signup' %}">Don't have an account? Signup here</a></p> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #333333;
+        }
+
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #dddddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        input[type="text"]:focus, input[type="password"]:focus {
+            border-color: #3b5998;
+            outline: none;
+        }
+
+        button {
+            background-color: #3b5998;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #365492;
+        }
+
+        a {
+            display: block;
+            margin-top: 20px;
+            color: #3b5998;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Login</h1>
+        <input type="text" placeholder="Username">
+        <input type="password" placeholder="Password">
+        <button>Login</button>
+        <a href="#">Don't have an account? Signup here</a>
+    </div>
+</body>
+</html>

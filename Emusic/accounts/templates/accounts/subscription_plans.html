@@ -1,0 +1,12 @@
+
+<h1>Subscription Plans</h1>
+<ul>
+    {% for plan in plans %}
+        <li>
+            <h2>{{ plan.name }}</h2>
+            <p>Price: ${{ plan.price }}</p>
+            <p>{{ plan.description }}</p>
+        </li>
+    {% endfor %}
+</ul>
+<!-- Page-specific content goes here -->
