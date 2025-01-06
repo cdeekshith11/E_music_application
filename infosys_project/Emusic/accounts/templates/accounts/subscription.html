@@ -1,0 +1,193 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscription Plans</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f7f9fc;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            font-size: 3rem;
+            text-align: center;
+            margin: 50px 0;
+            color: #333;
+            font-weight: 700;
+        }
+        .subscription-plans {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+        .plan-card {
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            width: 320px;
+            text-align: center;
+            padding: 30px;
+            margin-bottom: 40px;
+            transition: transform 0.3s ease-in-out;
+            position: relative;
+            overflow: hidden;
+        }
+        .plan-card:hover {
+            transform: scale(1.05);
+        }
+        .plan-card h2 {
+            font-size: 2rem;
+            color: #333;
+            font-weight: 600;
+        }
+        .plan-card .price {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #28a745;
+            margin: 20px 0;
+        }
+        .plan-card p {
+            font-size: 1.1rem;
+            color: #666;
+            margin: 10px 0;
+        }
+        .plan-card ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-bottom: 20px;
+        }
+        .plan-card ul li {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 10px;
+            text-align: left;
+            padding-left: 20px;
+        }
+        .plan-card .btn {
+            margin-top: 20px;
+            padding: 12px 25px;
+            font-size: 1.1rem;
+            background-color: #007bff;
+            color: white;
+            border-radius: 30px;
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+        .plan-card .btn:hover {
+            background-color: #0056b3;
+        }
+        .highlighted {
+            background-color: #ffeb3b;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+        .plan-card-icon {
+            font-size: 40px;
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .header-content {
+            text-align: center;
+            padding: 30px;
+        }
+        .header-content h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        .header-content p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-content">
+        <h1>Subscription Plans</h1>
+        <p>Choose the perfect plan for your needs. All plans come with a free trial!</p>
+    </div>
+
+    <div class="container">
+        <div class="subscription-plans">
+            <!-- Basic Plan -->
+            <div class="plan-card">
+                <div class="plan-card-icon">
+                    <i class="fas fa-cogs"></i>
+                </div>
+                <h2>Basic Plan</h2>
+                <p class="price">$10 / month</p>
+                <p>Ideal for individuals who are starting out.</p>
+                
+                <!-- Features List -->
+                <ul>
+                    <li><strong>Storage:</strong> 5 GB</li>
+                    <li><strong>Support:</strong> 24/7 Email</li>
+                    <li><strong>Features:</strong> Basic Access</li>
+                </ul>
+
+                <a href="{% url 'payment_page' %}" class="btn">Subscribe Now</a>
+            </div>
+
+            <!-- Standard Plan -->
+            <div class="plan-card highlighted">
+                <div class="plan-card-icon">
+                    <i class="fas fa-cogs"></i>
+                </div>
+                <h2>Standard Plan</h2>
+                <p class="price">$25 / month</p>
+                <p>Best for professionals looking for more features.</p>
+                
+                <!-- Features List -->
+                <ul>
+                    <li><strong>Storage:</strong> 50 GB</li>
+                    <li><strong>Support:</strong> 24/7 Email + Chat</li>
+                    <li><strong>Features:</strong> Advanced Access</li>
+                </ul>
+
+                <a href="{% url 'payment_page' %}" class="btn">Subscribe Now</a>
+            </div>
+
+            <!-- Premium Plan -->
+            <div class="plan-card">
+                <div class="plan-card-icon">
+                    <i class="fas fa-cogs"></i>
+                </div>
+                <h2>Premium Plan</h2>
+                <p class="price">$50 / month</p>
+                <p>For businesses and teams with advanced needs.</p>
+                
+                <!-- Features List -->
+                <ul>
+                    <li><strong>Storage:</strong> 100 GB</li>
+                    <li><strong>Support:</strong> 24/7 Phone + Chat</li>
+                    <li><strong>Features:</strong> Premium Access + Custom Tools</li>
+                </ul>
+
+                <a href="{% url 'payment_page' %}" class="btn">Subscribe Now</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add FontAwesome for Icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

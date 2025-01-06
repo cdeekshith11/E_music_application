@@ -1,0 +1,90 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f7fb;
+    color: #333;
+}
+
+.navbar {
+    background-color: #007bff;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    color: #fff !important;
+    display: flex;
+    align-items: center;
+}
+.navbar-brand img {
+    height: 100px; /* Increase this value to make the logo bigger */
+}
+.navbar-nav .nav-link {
+    color: #fff !important;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #FFD700 !important;
+}
+
+.hero-section {
+    position: relative;
+    background-image: url('{% static "img/hero.jpg" %}');
+    background-size: cover;
+    background-position: center;
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.hero-section .overlay {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 40px;
+    border-radius: 10px;
+}
+
+.container h2 {
+    color: #007bff;
+}
+
+.card {
+    border: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card-body {
+    text-align: center;
+    background-color: #007bff;
+    color: #fff;
+}
+
+.btn {
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-primary, .btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.btn-primary:hover, .btn-success:hover {
+    background-color: #218838;
+    border-color: #218838;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+}

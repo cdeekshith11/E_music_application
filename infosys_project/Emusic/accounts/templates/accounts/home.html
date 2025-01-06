@@ -1,0 +1,204 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-music Home</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        .navbar {
+            background-color: #343a40;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            color: #FF6347;
+        }
+
+        .navbar-nav .nav-link {
+            color: #fff;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #FF6347;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #FF6347, #FF4500);
+            color: white;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            padding: 80px 0;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+        }
+
+        .genre-heading {
+            color: #333;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        .card {
+            border: none;
+            border-radius: 15px;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-body {
+            padding: 20px;
+            text-align: center;
+            background-color: #fff;
+        }
+
+        .card-body img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .card-body img:hover {
+            transform: scale(1.05);
+        }
+
+        .btn-primary, .btn-success, .btn-danger {
+            border-radius: 25px;
+            padding: 12px 25px;
+            font-size: 1rem;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #007bff;
+            transform: scale(1.05);
+        }
+
+        .btn-success:hover {
+            background-color: #28a745;
+            transform: scale(1.05);
+        }
+
+        .btn-danger:hover {
+            background-color: #dc3545;
+            transform: scale(1.05);
+        }
+
+        .form-control {
+            border-radius: 20px;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .form-control:focus {
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.6);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* For better responsiveness */
+        .card-columns {
+            column-count: 3;
+        }
+
+        @media (max-width: 992px) {
+            .card-columns {
+                column-count: 2;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .card-columns {
+                column-count: 1;
+            }
+        }
+    </style>
+</head>
+<body style="background-image: url('{% static 'img/background.png' %}'); background-size: cover; background-attachment: fixed;">
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <a class="navbar-brand" href="#">
+            <img src="{% static 'img/logo.png' %}" alt="E-music Logo" style="height: 40px;"> E-music
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'subscription' %}">Subscription Pack</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'learn' %}">Learn</a></li>
+            </ul>
+        </div>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        {% if not user.is_authenticated %}
+            <a class="btn btn-primary ml-2" href="{% url 'signup' %}">Sign Up</a>
+            <a class="btn btn-success ml-2" href="{% url 'login' %}">Login</a>
+        {% else %}
+            <a class="btn btn-danger ml-2" href="{% url 'logout' %}">Logout</a>
+        {% endif %}
+    </nav>
+
+    <header class="header text-center">
+        <h1 class="display-4">Discover the World's Top Trending Songs</h1>
+        <p>E-music is the platform to discover songs, save your favorite tracks, and more.</p>
+    </header>
+
+    <div class="container my-5">
+        <h2 class="genre-heading">Explore Music Genres</h2>
+        <div class="card-columns">
+            <div class="card">
+                <div class="card-body">
+                    <img src="{% static 'img/pop.png' %}" class="card-img-top" alt="Pop Genre">
+                    <p class="card-text">Pop</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <img src="{% static 'img/rock.png' %}" class="card-img-top" alt="Rock Genre">
+                    <p class="card-text">Rock</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <img src="{% static 'img/hip_pop.png' %}" class="card-img-top" alt="Hip-Hop Genre">
+                    <p class="card-text">Hip-Hop</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

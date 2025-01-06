@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | E-music</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f8f9fa;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 80px 20px;
+        }
+        header h1 {
+            font-size: 3rem;
+            font-weight: 600;
+        }
+        header p {
+            font-size: 1.2rem;
+            font-weight: 300;
+            margin-top: 10px;
+        }
+        .contact-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 40px;
+            background: linear-gradient(135deg, #ff6f61, #ffb6b9);
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .contact-container h2 {
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        .contact-container p {
+            font-size: 1.1rem;
+            color: #fff;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .contact-form input, .contact-form textarea {
+            padding: 15px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            outline: none;
+        }
+        .contact-form input:focus, .contact-form textarea:focus {
+            border: 2px solid #ff6f61;
+        }
+        .contact-form input[type="text"], .contact-form input[type="email"] {
+            width: 100%;
+        }
+        .contact-form textarea {
+            width: 100%;
+            height: 150px;
+            resize: none;
+        }
+        .contact-form button {
+            padding: 15px;
+            background-color: #ff6f61;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .contact-form button:hover {
+            background-color: #e45a47;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Contact Us</h1>
+        <p>We'd love to hear from you!</p>
+    </header>
+
+    <div class="contact-container">
+        <h2>Get in Touch</h2>
+        <p>If you have any questions or feedback, feel free to reach out. We're always happy to assist you!</p>
+
+        <form class="contact-form">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f7f9fc;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+        .payment-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .payment-options {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .payment-option {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            width: 45%;
+            padding: 30px;
+            text-align: center;
+        }
+        .payment-option i {
+            font-size: 50px;
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+        .payment-option h4 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        .payment-option .btn {
+            padding: 12px 25px;
+            font-size: 1.1rem;
+            background-color: #007bff;
+            color: white;
+            border-radius: 30px;
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+        .payment-option .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="payment-header">
+            <h1>Complete Your Payment</h1>
+            <p>Select a payment method to proceed with your subscription.</p>
+        </div>
+
+        <div class="payment-options">
+            <!-- Credit Card Option -->
+            <div class="payment-option">
+                <i class="fas fa-credit-card"></i>
+                <h4>Pay with Credit Card</h4>
+                <p>Enter your credit card details to complete the transaction.</p>
+                <button class="btn">Pay Now</button>
+            </div>
+
+            <!-- PayPal Option -->
+            <div class="payment-option">
+                <i class="fab fa-paypal"></i>
+                <h4>Pay with PayPal</h4>
+                <p>Use your PayPal account to pay securely.</p>
+                <button class="btn">Pay with PayPal</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add FontAwesome for Icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

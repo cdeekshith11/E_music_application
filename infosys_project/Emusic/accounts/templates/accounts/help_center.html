@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Center</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+        }
+        .header {
+            text-align: center;
+            padding: 50px 20px;
+        }
+        .header h1 {
+            color: #333;
+        }
+        .faq-section {
+            max-width: 800px;
+            margin: 30px auto;
+        }
+        .card {
+            margin: 20px 0;
+        }
+        .card-header {
+            background-color: #343a40;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="{% url 'dashboard' %}">E-Music</a>
+    </nav>
+    <header class="header">
+        <h1>Help Center</h1>
+        <p>Find answers to frequently asked questions or get in touch with us!</p>
+    </header>
+    <div class="faq-section">
+        <div class="card">
+            <div class="card-header">How do I use the platform?</div>
+            <div class="card-body">E-Music offers a wide range of features to explore music. Log in to access your dashboard and start discovering!</div>
+        </div>
+        <div class="card">
+            <div class="card-header">How do I change my subscription?</div>
+            <div class="card-body">Go to the settings page and navigate to the subscription section to upgrade or modify your subscription.</div>
+        </div>
+    </div>
+</body>
+</html>
