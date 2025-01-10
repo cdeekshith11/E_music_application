@@ -1,15 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications</title>
+    <style>
+        /* Notification container styles */
+        .notification-container {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            max-width: 100%;
+            font-family: Arial, sans-serif;
+        }
 
-<!-- Page-specific content goes here -->
-<h1>Notifications</h1>
-<ul>
-    {% for notification in notifications %}
-        <li>
-            <p>{{ notification.message }}</p>
-            <small>{{ notification.created_at }}</small>
-            {% if not notification.is_read %}
-                <strong>(New)</strong>
-            {% endif %}
-        </li>
-    {% endfor %}
-</ul>
+        /* Individual notification styles */
+        .notification {
+            background-color: #f8f9fa;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px; /* Limit to 400px width for each notification */
+        }
 
+        .notification.success {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .notification.info {
+            background-color: #17a2b8;
+            color: white;
+        }
+
+        .notification.error {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .notification h3 {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        .notification p {
+            margin: 5px 0 0;
+            font-size: 14px;
+        }
+
+        .notification .time {
+            font-size: 12px;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="notification-container" id="notification-container">
+        <!-- Notifications will dynamically show here -->
+    </div>
+
+    <script>
+        // Function to format time as "x min ago" or "Just now"
+        function formatTime(timeDiffInSeconds) {
+            if (timeDiffInSeconds < 60) return 'Just now';
+            const minutes = Math.floor(timeDiffInSeconds / 60);
+            return `${minutes} min ago`;
+        }
+
+        // Function to create and show a notification
+        function showNotification(type, username, action, timeDiffInSeconds) {
+            const notificationContainer = document.getElementById('notification-container');
+
+            const notification = document.createElement('div');
+            notification.classList.add('notification', type);
+
+            const notificationTitle = document.createElement('h3');
+            notificationTitle.textContent = `${username} ${action}`;
+
+            const notificationMessage = document.createElement('p');
+            notificationMessage.textContent = action;
+
+            const notificationTime = document.createElement('span');
+            notificationTime.classList.add('time');
+            notificationTime.textContent = formatTime(timeDiffInSeconds);
+
+            notification.appendChild(notificationTitle);
+            notification.appendChild(notificationMessage);
+            notification.appendChild(notificationTime);
+
+            // Add notification to the container
+            notificationContainer.appendChild(notification);
+        }
+
+        // Example notifications for testing with increasing time intervals
+        const currentTime = Date.now();
+        
+        // Simulating notifications with different times
+        const notifications = [
+            { username: 'dk', action: 'logged in', time: (currentTime - 1000) / 1000 },      // 1 second ago
+            { username: 'dk', action: 'signed up', time: (currentTime - 6000) / 1000 },     // 6 seconds ago
+            { username: 'alice', action: 'searched for song: Believer', time: (currentTime - 30000) / 1000 },  // 30 seconds ago
+            { username: 'bob', action: 'logged in', time: (currentTime - 120000) / 1000 },    // 2 minutes ago
+            { username: 'charlie', action: 'error during signup', time: (currentTime - 180000) / 1000 },  // 3 minutes ago
+            { username: 'diana', action: 'searched for song: Shape of You', time: (currentTime - 300000) / 1000 }, // 5 minutes ago
+            { username: 'eve', action: 'signed up', time: (currentTime - 420000) / 1000 },   // 7 minutes ago
+            { username: 'frank', action: 'searched for song: Faded', time: (currentTime - 540000) / 1000 }, // 9 minutes ago
+            { username: 'grace', action: 'error during login', time: (currentTime - 660000) / 1000 },  // 11 minutes ago
+            { username: 'hannah', action: 'searched for song: Roar', time: (currentTime - 780000) / 1000 }, // 13 minutes ago
+        ];
+
+        // Simulate notifications appearing in order of time from seconds to minutes
+        notifications.forEach(notification => {
+            setTimeout(() => {
+                showNotification('success', notification.username, notification.action, (currentTime - (notification.time * 1000)) / 1000);
+            }, 1000);
+        });
+    </script>
+
+</body>
+</html>

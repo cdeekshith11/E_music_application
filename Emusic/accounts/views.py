@@ -1,75 +1,4 @@
 
-# from django.shortcuts import render, redirect
-# from django.contrib.auth import authenticate, login
-# from django.contrib.auth.models import User
-# from django.contrib import messages
-# from django.contrib.auth.decorators import login_required
-# from accounts.models import Genre, Notification, SongCategory, SubscriptionPlan
-
-# def home(request):
-#     return render(request, 'accounts/home.html')
-
-# def login_view(request):
-#     if request.method == 'POST':
-#         username = request.POST.get('username')
-#         password = request.POST.get('password')
-#         user = authenticate(request, username=username, password=password)
-#         if user is not None:
-#             login(request, user)
-#             return redirect('dashboard')  # Redirect to the dashboard after login
-#         else:
-#             messages.error(request, 'Invalid username or password.')
-#     return render(request, 'accounts/login.html')
-
-# def signup_view(request):
-#     if request.method == 'POST':
-#         username = request.POST.get('username')
-#         password = request.POST.get('password')
-#         confirm_password = request.POST.get('confirm_password')
-
-#         if password != confirm_password:
-#             messages.error(request, 'Passwords do not match.')
-#         else:
-#             if User.objects.filter(username=username).exists():
-#                 messages.error(request, 'Username already exists.')
-#             else:
-#                 User.objects.create_user(username=username, password=password)
-#                 messages.success(request, 'Account created successfully. Please log in.')
-#                 return redirect('login')
-#     return render(request, 'accounts/signup.html')
-
-# @login_required
-# def dashboard(request):
-#     return render(request, 'accounts/dashboard.html')
-
-# def about_us(request):
-#     return render(request, 'accounts/about_us.html')
-
-# def contact_us(request):
-#     if request.method == 'POST':
-#         name = request.POST.get('name')
-#         email = request.POST.get('email')
-#         message = request.POST.get('message')
-#         messages.success(request, 'Thank you for reaching out. We will get back to you soon.')
-#         return redirect('contact')
-#     return render(request, 'accounts/contact_us.html')
-
-# def subscription_plans(request):
-#     plans = SubscriptionPlan.objects.all()
-#     return render(request, 'accounts/subscription_plans.html', {'plans': plans})
-
-# def categories(request):
-#     categories = SongCategory.objects.all()
-#     return render(request, 'accounts/categories.html', {'categories': categories})
-
-# def genres(request, category_id):
-#     genres = Genre.objects.filter(category_id=category_id)
-#     return render(request, 'accounts/genres.html', {'genres': genres})
-
-# @login_required
-# def notifications(request):
-#     notifications = Notification.objects.filter(user=request.user).order_by('-created_at')
-#     return render(request, 'accounts/notifications.html', {'notifications': notifications})
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
@@ -80,6 +9,10 @@ from django.conf import settings
 from django.shortcuts import redirect, render
 from django.contrib.auth import update_session_auth_hash
 from django.http import HttpResponseNotFound
+import spotipy
+from spotipy.oauth2 import SpotifyOAuth
+from django.conf import settings
+from django.shortcuts import redirect, render
 
 def home_view(request):
     return render(request, 'accounts/home.html')
@@ -163,8 +96,17 @@ def spotify_callback(request):
 
     return render(request, "spotify_dashboard.html", {"user_data": user_data})
 def spotify_dashboard(request):
-    # Your logic for the Spotify dashboard
-    return render(request, 'accounts/spotify_dashboard.html')
+    # Retrieve access token from session
+    access_token = request.session.get("access_token")
+
+    # If no access token, redirect to login
+    if not access_token:
+        messages.error(request, "Spotify access token is missing.")
+        return redirect("spotify_login")
+
+    # Continue to the next step
+    return render(request, "accounts/spotify_dashboard.html")
+
 def help_center_view(request):
     return render(request,'accounts/help_center.html')
 def settings_view(request):
@@ -245,3 +187,57 @@ def payment_page(request):
     return render(request, 'accounts/payment_page.html')
 def subscription_view(request):
     return render(request, 'accounts/subscription.html')
+sp_oauth = SpotifyOAuth(
+    client_id=settings.SPOTIFY_CLIENT_ID,
+    client_secret=settings.SPOTIFY_CLIENT_SECRET,
+    redirect_uri=settings.SPOTIFY_REDIRECT_URI,
+    scope="user-read-recently-played user-top-read user-library-read playlist-read-private"
+)
+
+def spotify_login(request):
+    # Redirect to Spotify's authorization URL
+    auth_url = sp_oauth.get_authorize_url()
+    return redirect(auth_url)
+
+def spotify_callback(request):
+    # Get the authorization code from the callback
+    code = request.GET.get('code')
+    token_info = sp_oauth.get_access_token(code)
+    request.session['access_token'] = token_info['access_token']
+    return redirect('dashboard')  # Redirect to your dashboard after login
+
+def fetch_dashboard_data(request):
+    access_token = request.session.get('access_token')
+    
+    # Check if the user is authenticated with Spotify
+    if not access_token:
+        return redirect('spotify-login')  # Redirect to login if no access token
+    
+    # Initialize Spotify client with the access token
+    sp = spotipy.Spotify(auth=access_token)
+    
+    try:
+        # Fetch trending songs (new releases)
+        new_releases = sp.new_releases(country='US', limit=10)['albums']['items']
+        
+        # Fetch recommended genres
+        genres = sp.recommendation_genre_seeds()['genres']
+        
+        # Fetch top artists for the user
+        top_artists = sp.current_user_top_artists(limit=10)['items']
+        
+        # Context for rendering in the template
+        context = {
+            'new_releases': new_releases,
+            'genres': genres,
+            'top_artists': top_artists,
+        }
+        return render(request, 'accounts/dashboard.html', context)
+    except spotipy.exceptions.SpotifyException as e:
+        # Handle Spotify API exceptions
+        messages.error(request, "There was an error fetching data from Spotify.")
+        print(e)
+        return redirect('spotify-login')
+def notifications_view(request):
+    # Render the notifications page template
+    return render(request, 'accounts/notifications.html')

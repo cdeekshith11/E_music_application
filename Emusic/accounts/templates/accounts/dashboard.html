@@ -172,7 +172,7 @@ body {
     transition: transform 0.3s ease-in-out;
 }
 
-/* Card Image Styles */
+
 .card-body img {
     max-width: 100%;
     height: auto;
@@ -247,6 +247,7 @@ body {
                 <li class="nav-item">
                     <a class="nav-link" href="https://open.spotify.com" target="_blank">Songs</a>
                 </li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'notifications' %}">Notification</a></li>
             </ul>
         </div>
         <form id="search-form" class="form-inline my-2 my-lg-0">
@@ -286,10 +287,10 @@ body {
         </div>
     </header>
     
-    <div class="container my-5">
+    <!-- <div class="container my-5">
         <h2 class="genre-heading">Explore Genres</h2>
         <div class="row">
-            <!-- Genre 1: Pop -->
+           
             <div class="col-md-4">
                 <div class="card mb-4" data-spotify-url="https://open.spotify.com/genre/pop">
                     <img src="{% static 'img/pop.png' %}" class="card-img-top" alt="Pop Genre">
@@ -301,7 +302,7 @@ body {
                 </div>
             </div>
         
-            <!-- Genre 2: Rock -->
+
             <div class="col-md-4">
                 <div class="card mb-4" data-spotify-url="https://open.spotify.com/genre/rock">
                     <img src="{% static 'img/rock.png' %}" class="card-img-top" alt="Rock Genre">
@@ -313,7 +314,7 @@ body {
                 </div>
             </div>
         
-            <!-- Genre 3: Hip-Hop -->
+            
             <div class="col-md-4">
                 <div class="card mb-4" data-spotify-url="https://open.spotify.com/genre/hiphop">
                     <img src="{% static 'img/hip_pop.png' %}" class="card-img-top" alt="Hip-Hop Genre">
@@ -327,7 +328,7 @@ body {
         </div>
         
         <div class="row">
-            <!-- Genre 4: Jazz -->
+            
             <div class="col-md-4">
                 <div class="card mb-4" data-spotify-url="https://open.spotify.com/genre/jazz">
                     <img src="{% static 'img/jazz.png' %}" class="card-img-top" alt="Hip-Hop Genre">
@@ -340,7 +341,7 @@ body {
             </div>
         
     
-            <!-- Genre 5: Classical -->
+           
             <div class="col-md-4">
                 <div class="card mb-4" data-spotify-url="https://open.spotify.com/genre/classical">
                     <img src="{% static 'img/classical.png' %}" class="card-img-top" alt="Hip-Hop Genre">
@@ -353,7 +354,7 @@ body {
             </div>
         
     
-            <!-- Genre 6: folk -->
+            
             <div class="col-md-4">
                 <div class="card mb-4" data-spotify-url="https://open.spotify.com/genre/folk">
                     <img src="{% static 'img/folk.png' %}" class="card-img-top" alt="folk Genre">
@@ -366,11 +367,248 @@ body {
             </div>
         </div>
         </div>
+    -->
+    <div class="container mt-5">
+        <!-- Popular Artists Section -->
+        <div class="section mb-5">
+          <h2 class="mb-4" style="font-weight: bold;color:black">Popular Artists</h2>
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+            <!-- Card 1 -->
+            <div class="col">
+              <a
+                href="https://open.spotify.com/search/darshan%20raval"
+                target="_blank"
+                class="text-decoration-none"
+              >
+                <div class="card h-100">
+                  <img
+                    src="https://a10.gaanacdn.com/gn_img/artists/zLp36v3rGe/Lp36BL5v3r/size_l_1720183611.webp"
+                    class="card-img-top"
+                    alt="Artist Image"
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title">Darshan Raval</h5>
+                    <p class="card-text"></p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <!-- Card 2 -->
+            <div class="col">
+              <a
+                href="https://open.spotify.com/search/ar%2Cman%20malik"
+                target="_blank"
+                class="text-decoration-none"
+              >
+                <div class="card h-100">
+                  <img
+                    src="https://yt3.googleusercontent.com/Y3Xd5a92Olf_5x5igDk8MzzqyKChkP3jKoV6-Iux8e7zChGDMSsrLIt95T8GZd--0FTqQE9KfQ=s900-c-k-c0x00ffffff-no-rj"
+                    class="card-img-top"
+                    alt="Artist Image"
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title">Armaan Malik</h5>
+                    <p class="card-text"></p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <!-- Card 3 -->
+            <div class="col">
+              <a
+                href="https://open.spotify.com/search/shreyal%20ghoshal"
+                target="_blank"
+                class="text-decoration-none"
+              >
+                <div class="card h-100">
+                  <img
+                    src="https://static.toiimg.com/photo/81450030.cms"
+                    class="card-img-top"
+                    alt="Artist Image"
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title">Shreya Ghoshal</h5>
+                    <p class="card-text"></p>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Popular Songs Section -->
+        <div class="section mb-5">
+          <h2 class="mb-4" style="font-weight:bold;color: black;">Popular Songs</h2>
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+            <!-- Card 1 -->
+            <div class="col">
+              <a
+                href="https://open.spotify.com/search/see%20you%20soon"
+                target="_blank"
+                class="text-decoration-none"
+              >
+                <div class="card h-100">
+                  <img
+                    src="https://i1.sndcdn.com/artworks-000162897425-k8h6e5-t500x500.jpg"
+                    class="card-img-top"
+                    alt="Song Image"
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title">See You Again</h5>
+                    <p class="card-text"></p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <!-- Card 2 -->
+            <div class="col">
+              <a
+                href="https://open.spotify.com/search/sun%20raha%20hai"
+                target="_blank"
+                class="text-decoration-none"
+              >
+                <div class="card h-100">
+                  <img
+                    src="https://i.scdn.co/image/ab67616d0000b2736404721c1943d5069f0805f3"
+                    class="card-img-top"
+                    alt="Song Image"
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title">Sunn Raha Hai</h5>
+                    <p class="card-text"></p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <!-- Card 3 -->
+            <div class="col">
+              <a
+                href="https://open.spotify.com/search/kun%20faya%20kun"
+                target="_blank"
+                class="text-decoration-none"
+              >
+                <div class="card h-100">
+                  <img
+                    src="https://i.scdn.co/image/ab67616d0000b27354e544672baa16145d67612b"
+                    class="card-img-top"
+                    alt="Song Image"
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title">Kun Faya Kun</h5>
+                    <p class="card-text"></p>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Popular Radio Section -->
+        <div class="section mb-5">
+          <h2 class="mb-4" style="font-weight: bold;color:black;">Popular Radio</h2>
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+            <!-- Card 1 -->
+            <div class="col">
+              <a
+                href="https://open.spotify.com/playlist/37i9dQZF1E4vqXjPu7Hg0z"
+                target="_blank"
+                class="text-decoration-none"
+              >
+                <div class="card h-100">
+                  <img
+                    src="{% static 'img/podcast1.jpeg' %}"
+                    class="card-img-top"
+                    alt="Radio Image"
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title">shreya Ghoshal</h5>
+                    <p class="card-text"></p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <!-- Card 2 -->
+            <div class="col">
+              <a
+                href="https://open.spotify.com/playlist/37i9dQZF1E4Ca3ZM5qkErO"
+                target="_blank"
+                class="text-decoration-none"
+              >
+                <div class="card h-100">
+                  <img
+                    src="{% static 'img/podcast2.jpeg' %}"
+                    class="card-img-top"
+                    alt="Radio Image"
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title">Darshan Raval</h5>
+                    <p class="card-text"></p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <!-- Card 3 -->
+            <div class="col">
+              <a
+                href="https://open.spotify.com/search/arjit%20singh%20radio"
+                target="_blank"
+                class="text-decoration-none"
+              >
+                <div class="card h-100">
+                  <img
+                    src="{% static 'img/podcast3.jpeg' %}"
+                    class="card-img-top"
+                    alt="Radio Image"
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title">Arjit Singh</h5>
+                    <p class="card-text"></p>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <main>
+        {% block content %}
+        <!-- Display Search Results -->
+        {% if songs %}
+        <div class="container mt-4">
+          <h2>Search Results for "{{ query }}"</h2>
+          <div class="row">
+            {% for song in songs %}
+            <div class="col-md-4">
+              <div class="card">
+                <img
+                  src="{{ song.album_image_url }}"
+                  class="card-img-top"
+                  alt="{{ song.name }}"
+                />
+                <div class="card-body">
+                  <h5 class="card-title">{{ song.name }}</h5>
+                  <p class="card-text">{{ song.artist }}</p>
+                  <a
+                    href="{{ song.external_url }}"
+                    class="btn btn-primary"
+                    target="_blank"
+                    >Listen on Spotify</a
+                  >
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        {% else %}
+        <div class="container mt-4">
+          <h2>{{ query }}</h2>
+        </div>
+        {% endif %} {% endblock %}
+      </main>
     
-    
-    
-    
-    </section>
+
 </div>
 
     </div>

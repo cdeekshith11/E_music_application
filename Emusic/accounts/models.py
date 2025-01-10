@@ -37,3 +37,24 @@ class Notification(models.Model):
 
     def __str__(self):
         return f"Notification for {self.user.username}"
+    
+# models.py
+from django.db import models
+
+class Genre(models.Model):
+    name = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='genre_images/')
+
+    def __str__(self):
+        return self.name
+
+class Song(models.Model):
+    title = models.CharField(max_length=100)
+    genre = models.ForeignKey(Genre, related_name='songs', on_delete=models.CASCADE)
+    artist = models.CharField(max_length=100)
+    album = models.CharField(max_length=100)
+    audio_file = models.FileField(upload_to='songs/')
+
+    def __str__(self):
+        return self.title
+

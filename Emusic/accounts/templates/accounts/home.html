@@ -50,8 +50,10 @@
         }
 
         .genre-heading {
-            color: #333;
-            font-size: 2.5rem;
+            color: rgb(229, 200, 200);
+            font-size: 5rem;
+            font-family: "Playfair Display", serif;
+            font-weight: bold;
             margin-bottom: 50px;
             text-align: center;
         }
@@ -115,6 +117,99 @@
         .form-control:focus {
             box-shadow: 0 0 8px rgba(0, 123, 255, 0.6);
         }
+        @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap");
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+footer {
+  margin-top: auto; /* Keeps footer at the bottom */
+  background-color: #121212; /* Dark theme */
+  color: #ffffff; /* White text for contrast */
+  text-align: center;
+  padding: 20px 10px;
+}
+
+.footer-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.footer-logo {
+  font-size: 30px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.footer-logo span {
+  color: #1db954; /* Spotify-like green for a vibrant touch */
+}
+
+.footer-tagline {
+  font-size: 20px;
+  font-weight: 300;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  margin-bottom: 15px;
+}
+
+.social-icons {
+  margin-bottom: 15px;
+}
+
+.icon {
+  color: #ffffff;
+  font-size: 20px;
+  margin: 0 10px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.icon:hover {
+  color: #1db954;
+}
+
+.footer-copy {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
+
+.tagline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Roboto", sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  color: #fff;
+  text-align: center;
+  background-color: #121212; /* Dark background */
+  padding: 20px 40px;
+  border-radius: 30px;
+  margin: 40px auto;
+}
+
+.tagline-text {
+  margin-right: 10px;
+}
+
+.tagline-icon {
+  font-size: 30px;
+  color: #1db954; /* Music theme color */
+  transition: transform 0.3s ease;
+}
+
+.tagline:hover .tagline-icon {
+  transform: rotate(360deg); /* Adds a spinning animation to the music icon */
+}
 
         .container {
             max-width: 1200px;
@@ -140,7 +235,12 @@
         }
     </style>
 </head>
-<body style="background-image: url('{% static 'img/background.png' %}'); background-size: cover; background-attachment: fixed;">
+<body style="background-image: url('{% static 'img/background1.png' %}');
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+background-attachment: fixed;
+height: 100vh; /* Optional: Full viewport height">
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <a class="navbar-brand" href="#">
             <img src="{% static 'img/logo.png' %}" alt="E-music Logo" style="height: 40px;"> E-music
@@ -151,7 +251,6 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About Us</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'subscription' %}">Subscription Pack</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact Us</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'learn' %}">Learn</a></li>
             </ul>
@@ -168,34 +267,24 @@
         {% endif %}
     </nav>
 
-    <header class="header text-center">
-        <h1 class="display-4">Discover the World's Top Trending Songs</h1>
-        <p>E-music is the platform to discover songs, save your favorite tracks, and more.</p>
-    </header>
-
+    <div class="tagline">
+        <span class="tagline-text"> ♫ ♬ Feel the Beat, Live the Music ♬ ♫ </span>
+        <i class="fas fa-music tagline-icon"></i>
+      </div>
+      
     <div class="container my-5">
-        <h2 class="genre-heading">Explore Music Genres</h2>
-        <div class="card-columns">
-            <div class="card">
-                <div class="card-body">
-                    <img src="{% static 'img/pop.png' %}" class="card-img-top" alt="Pop Genre">
-                    <p class="card-text">Pop</p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-body">
-                    <img src="{% static 'img/rock.png' %}" class="card-img-top" alt="Rock Genre">
-                    <p class="card-text">Rock</p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-body">
-                    <img src="{% static 'img/hip_pop.png' %}" class="card-img-top" alt="Hip-Hop Genre">
-                    <p class="card-text">Hip-Hop</p>
-                </div>
-            </div>
-        </div>
+        <h1 class="genre-heading">E Music</h1>
+        
     </div>
+    
+    <footer class="footer">
+        <div class="footer-container">
+          <h3 class="footer-logo">Music<span>App</span></h3>
+          <p class="footer-tagline">Your music, your vibe, anytime, anywhere.</p>
+          <p class="footer-copy">&copy; 2025 MusicApp. All rights reserved.</p>
+        </div>
+      </footer>
+      
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
